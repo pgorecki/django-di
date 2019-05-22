@@ -15,3 +15,7 @@ class ListAllTodos:
 class ListOwnTodos:
     def execute(self, owner_id):
         return Todo.objects.get_user_todos(owner_id)
+
+class ListOwnOverdueTodos:
+    def execute(self, owner_id, now):
+        return Todo.objects.get_user_todos(owner_id).filter(due_date__lt=now)
